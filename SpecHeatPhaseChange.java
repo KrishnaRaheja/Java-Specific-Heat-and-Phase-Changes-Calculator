@@ -26,8 +26,8 @@ double T_final = T_end.nextDouble();
 
 double Normal_T = T_final - T_initial;
 
-        
-if (T_initial <= 0 && T_final <= 0) { //if no phase change
+//if no phase change
+if (T_initial <= 0 && T_final <= 0) { 
     double mcat0 = grams * SHice * Normal_T;
     System.out.println(mcat0 + " Joules");
 } 
@@ -35,22 +35,24 @@ if (T_initial <= 0 && T_final <= 0) { //if no phase change
         double mcat1 = grams * SHwater * Normal_T;
         System.out.println(mcat1 + " Joules");
     }
-
-    else if (T_initial > 99 && T_final > 99) { //99 because 100 is boiling point and anything greater than 99 includes 100
+//100 because it is boiling point
+    else if (T_initial > 100 && T_final > 100) { 
         double mcat2 = grams * SHsteam * Normal_T;
         System.out.println(mcat2 + " Joules");
     }
 
-    else if (T_initial < 0 && T_final < 100 && T_final >= 0) {
-        double DistanceFrom0C = Math.abs(T_initial); //This takes the absolute value of the initial temprature, the distance from 0. This is for the first phase change.
+    else if (T_initial < 0 && T_final < 100 && T_final > 0) {
+        double DistanceFrom0C = Math.abs(T_initial); 
+        //This takes the absolute value of the initial temprature, the distance from 0. This is for the first phase change.
         double mcat_to_0C = grams * SHice * DistanceFrom0C;
         double Phasechange0C = Hfusion * grams; //In Joules
         double mcat3 = grams * SHwater * (T_final - 0); 
         System.out.println(mcat3 + Phasechange0C + mcat_to_0C + " Joules");
     }
 
-    else if (T_initial < 0 && T_final > 99) {
-        double DistanceFrom0C = Math.abs(T_initial); //This takes the absolute value of the initial temprature, the distance from 0. This is for the first phase change.
+    else if (T_initial < 0 && T_final >= 100) {
+        double DistanceFrom0C = Math.abs(T_initial); 
+        //This takes the absolute value of the initial temprature, the distance from 0. This is for the first phase change.
         double mcat_to_0C = grams * SHice * DistanceFrom0C;
         double Phasechange0C = Hfusion * grams; //In Joules
         double Phasechange100C = Hvaporizatoin * grams;
@@ -58,7 +60,7 @@ if (T_initial <= 0 && T_final <= 0) { //if no phase change
         System.out.println(mcat4 + Phasechange0C + Phasechange100C + mcat_to_0C + " Joules");
     }
     
-    else if (T_initial > 0 && T_final > 99) {
+    else if (T_initial > 0 && T_final > 100) {
         double DistanceFrom100C = 100 - T_initial;
         double mcat5 = grams * SHwater * DistanceFrom100C;
         double Phasechange100C = Hvaporizatoin * grams; //In Joules
