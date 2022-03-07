@@ -25,7 +25,14 @@ System.out.println("What was the final temprature in C: ");
 double T_final = T_end.nextDouble();
 
 double Normal_T = T_final - T_initial;
-
+/**
+ * if the object is ice heated to ice
+ * elif the object heated is water to water
+ * elif the oject heated is steam to steam
+ * elif the object goes from ice to water
+ * elif the object goes from ice to steam
+ * elif the object goes from water to steam 
+ */
 //if no phase change
 if (T_initial <= 0 && T_final <= 0) { 
     double mcat0 = grams * SHice * Normal_T;
