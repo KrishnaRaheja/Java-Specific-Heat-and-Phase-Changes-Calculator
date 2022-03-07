@@ -31,7 +31,7 @@ double Normal_T = T_final - T_initial;
  * elif the oject heated is steam to steam
  * elif the object goes from ice to water
  * elif the object goes from ice to steam
- * elif the object goes from water to steam 
+ * else the object goes from water to steam 
  */
 //if no phase change
 if (T_initial <= 0 && T_final <= 0) { 
@@ -67,7 +67,7 @@ if (T_initial <= 0 && T_final <= 0) {
         System.out.println(mcat4 + Phasechange0C + Phasechange100C + mcat_to_0C + " Joules");
     }
     
-    else if (T_initial > 0 && T_final > 100) {
+    else {
         double DistanceFrom100C = 100 - T_initial;
         double mcat5 = grams * SHwater * DistanceFrom100C;
         double Phasechange100C = Hvaporizatoin * grams; //In Joules
